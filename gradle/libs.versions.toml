@@ -9,6 +9,7 @@ activityCompose = "1.13.0"
 kotlin = "2.4.0"
 composeBom = "2026.06.01"
 
+okhttp = "5.4.0"
 androidx-lifecycle = "2.11.0"
 navigation-compose = "2.9.8"
 retrofit = "3.0.0"
@@ -39,7 +40,7 @@ androidx-navigation-compose = { group = "androidx.navigation", name = "navigatio
 
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-converter-kotlinx-serialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "retrofit" }
-
+okhttp = {group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp"}
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 coil-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil" }
 

@@ -1,7 +1,6 @@
 package com.example.amphibiansapp.ui.screens.components
 
-import androidx.annotation.DrawableRes
-import androidx.compose.foundation.Image
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -13,11 +12,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
+import coil3.request.crossfade
 import com.example.amphibiansapp.R
 import com.example.amphibiansapp.model.Amphibian
 import com.example.amphibiansapp.ui.theme.AmphibiansAppTheme
@@ -31,9 +33,10 @@ fun AmphibianCardList(
     LazyColumn(modifier = modifier) {
         items (amphibians.size){
             AmphibianCard(
-                title = amphibians[it].titleId,
-                description = amphibians[it].descriptionId,
-                img = amphibians[it].imgId,
+                name = amphibians[it].name,
+                type = amphibians[it].type,
+                description = amphibians[it].description,
+                img = amphibians[it].imgSrc,
                 modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
             )
         }
@@ -41,10 +44,11 @@ fun AmphibianCardList(
 }
 @Composable
 fun AmphibianCard(
-    title: Int,
-    description: Int,
-    @DrawableRes img: Int,
-    modifier: Modifier = Modifier
+    name: String,
+    type: String,
+    description: String,
+    img: String,
+    @SuppressLint("ModifierParameter") modifier: Modifier = Modifier
 ){
     val imgHeight = dimensionResource(R.dimen.image_height)
     val textPadding = dimensionResource(R.dimen.text_padding)
@@ -52,7 +56,7 @@ fun AmphibianCard(
     Card(modifier = modifier){
         Column {
             Text(
-                text = stringResource(title),
+                text = "$name ($type)",
                 style = MaterialTheme.typography.titleLarge,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -60,8 +64,11 @@ fun AmphibianCard(
                     .fillMaxWidth()
             )
 
-            Image (
-                painter = painterResource(img),
+            AsyncImage(
+                model = ImageRequest.Builder(context = LocalContext.current)
+                    .data(img)
+                    .crossfade(true)
+                    .build(),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
@@ -70,7 +77,7 @@ fun AmphibianCard(
             )
 
             Text(
-                text = stringResource(description),
+                text = description,
                 style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(textPadding)
             )
@@ -83,9 +90,10 @@ fun AmphibianCard(
 fun AmphibianCardPreview(){
     AmphibiansAppTheme {
         AmphibianCard(
-            title = R.string.test_title,
-            description = R.string.test_description,
-            img = R.drawable.testimg,
+            name = stringResource(R.string.test_title),
+            type = "Frog",
+            description = stringResource(R.string.test_description),
+            img = "",
             modifier = Modifier.padding(dimensionResource(R.dimen.text_padding)*2)
         )
     }
