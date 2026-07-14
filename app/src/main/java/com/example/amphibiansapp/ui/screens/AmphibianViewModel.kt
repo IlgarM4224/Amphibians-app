@@ -46,6 +46,10 @@ class AmphibianViewModel(private val amphibiansRepository: AmphibiansRepository)
         }
     }
 
+    fun retry(){
+        getAmphibians()
+    }
+
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
