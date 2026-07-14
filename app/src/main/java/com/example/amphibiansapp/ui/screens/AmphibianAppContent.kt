@@ -9,13 +9,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
+import com.example.amphibiansapp.ContentType
 import com.example.amphibiansapp.R
 import com.example.amphibiansapp.model.Amphibian
 import com.example.amphibiansapp.ui.screens.components.AmphibianCardList
+import com.example.amphibiansapp.ui.screens.components.AmphibiansGridList
 
 @Composable
 fun AmphibianAppContent(
     amphibians: List<Amphibian>,
+    contentType: ContentType,
     modifier: Modifier
 ){
     Scaffold(
@@ -29,9 +32,17 @@ fun AmphibianAppContent(
         },
         modifier = modifier
     ) { innerPadding ->
-        AmphibianCardList(
-            modifier = Modifier.padding(innerPadding),
-            amphibians = amphibians
-        )
+
+        if (contentType == ContentType.GridList){
+            AmphibiansGridList(
+                modifier = Modifier.padding(innerPadding),
+                amphibians = amphibians
+            )
+        } else {
+            AmphibianCardList(
+                modifier = Modifier.padding(innerPadding),
+                amphibians = amphibians
+            )
+        }
     }
 }
