@@ -8,4 +8,7 @@
         their hind legs which are wedged to aid in digging. They are typically gray, green,
         or brown with dark spots.
     </string>
+    <string name="no_internet">There is no internet connection, check your connection.</string>
+    <string name="loading">Loading</string>
+    <string name="retry">Retry</string>
 </resources>
