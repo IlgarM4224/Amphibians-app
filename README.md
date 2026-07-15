@@ -3,14 +3,17 @@ The main purpose of this app is to get information from the server, parse JSON a
 
 **Source code:**
 [Browse the app package on GitHub ](https://github.com/IlgarM4224/Amphibians-app/tree/main/app/src/main/java/com/example/amphibiansapp)
+
 ## Visuals
-### Home page
-![Card screen](media/CardScreen.gif)
 
-![Griid screen](media/CridScreen.gif)
+Home page                                                         |                                                        Error page |
+|:----------------------------------------------------------------|------------------------------------------------------------------:|
+|<img src="media/CardScreen.gif" width="330" alt="Card screen" /> | <img src="media/ErrorScreen.png" width="330" alt="Error screen" />|
 
-### Error page
-![Error screen](media/ErrorScreen.png)
+### Home page on tablet
+<img src="media/CridScreen.gif" height="450" alt="Grid screen" />
+
+
 
 ## Tech Stack & Architecture
 
